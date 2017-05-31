@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Entities\ATM.cs" />
     <Compile Include="Entities\BasedeDatos.cs" />
     <Compile Include="Entities\Cuenta.cs" />
@@ -48,11 +47,19 @@
     <Compile Include="Entities\RanuraDeposito.cs" />
     <Compile Include="Entities\Retiro.cs" />
     <Compile Include="Entities\Teclado.cs" />
+    <Compile Include="IRepositories\IATMRepository.cs" />
+    <Compile Include="IRepositories\IBasedeDatosRepository.cs" />
+    <Compile Include="IRepositories\ICuentaRepository.cs" />
+    <Compile Include="IRepositories\IDispensadorEfectivoRepository.cs" />
+    <Compile Include="IRepositories\IPantallaRepository.cs" />
+    <Compile Include="IRepositories\IRanuraDepositoRepository.cs" />
+    <Compile Include="IRepositories\IRepository.cs" />
+    <Compile Include="IRepositories\IRetiroRepository.cs" />
+    <Compile Include="IRepositories\ITecladoRepository.cs" />
+    <Compile Include="IRepositories\IUnityofWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="IRepositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
