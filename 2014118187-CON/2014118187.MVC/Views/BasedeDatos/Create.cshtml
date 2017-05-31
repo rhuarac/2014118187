@@ -1,0 +1,106 @@
+﻿@model _2014118187_ENT.Entities.BasedeDatos
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>BasedeDatos</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BasedeDatosId, "BasedeDatosId", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("BasedeDatosId", String.Empty)
+                @Html.ValidationMessageFor(model => model.BasedeDatosId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AutentificarCuenta, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AutentificarCuenta)
+                @Html.ValidationMessageFor(model => model.AutentificarCuenta)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ObtenerSaldoDisponible, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ObtenerSaldoDisponible)
+                @Html.ValidationMessageFor(model => model.ObtenerSaldoDisponible)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ObtenerSaldoTotal, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ObtenerSaldoTotal)
+                @Html.ValidationMessageFor(model => model.ObtenerSaldoTotal)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Debitar, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Debitar)
+                @Html.ValidationMessageFor(model => model.Debitar)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Acreditar, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Acreditar)
+                @Html.ValidationMessageFor(model => model.Acreditar)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CuentaId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CuentaId)
+                @Html.ValidationMessageFor(model => model.CuentaId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ATMId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ATMId)
+                @Html.ValidationMessageFor(model => model.ATMId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RetiroId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RetiroId)
+                @Html.ValidationMessageFor(model => model.RetiroId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

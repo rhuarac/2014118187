@@ -1,0 +1,88 @@
+﻿@model IEnumerable<_2014118187_ENT.Entities.BasedeDatos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ATM.DescripcionATM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Retiro.RetiroId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AutentificarCuenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ObtenerSaldoDisponible)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ObtenerSaldoTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Debitar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Acreditar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CuentaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ATMId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RetiroId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ATM.DescripcionATM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Retiro.RetiroId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AutentificarCuenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ObtenerSaldoDisponible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ObtenerSaldoTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Debitar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Acreditar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CuentaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ATMId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RetiroId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BasedeDatosId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BasedeDatosId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BasedeDatosId })
+        </td>
+    </tr>
+}
+
+</table>

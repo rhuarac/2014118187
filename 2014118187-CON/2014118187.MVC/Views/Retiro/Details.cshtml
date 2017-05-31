@@ -1,0 +1,99 @@
+﻿@model _2014118187_ENT.Entities.Retiro
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Retiro</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ATM.DescripcionATM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ATM.DescripcionATM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BasedeDatos.BasedeDatosId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BasedeDatos.BasedeDatosId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DispensadorEfectivo.DispensadorEfectivoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DispensadorEfectivo.DispensadorEfectivoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pantalla.PantallaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pantalla.PantallaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teclado.TecladoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teclado.TecladoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PantallaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PantallaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TecladoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TecladoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DispensadorEfectivoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DispensadorEfectivoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BasedeDatosId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BasedeDatosId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ATMId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ATMId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RetiroId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

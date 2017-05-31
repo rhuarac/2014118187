@@ -1,0 +1,52 @@
+﻿@model IEnumerable<_2014118187_ENT.Entities.Teclado>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ATM.DescripcionATM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Retiro.RetiroId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ATMId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RetiroId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ATM.DescripcionATM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Retiro.RetiroId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ATMId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RetiroId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TecladoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TecladoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TecladoId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<_2014118187_ENT.Entities.ATM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Retiro.RetiroId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescripcionATM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RanuraDepositoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TecladoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DispensadorEfectivoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PantallaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RetiroId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasedeDatosId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Retiro.RetiroId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescripcionATM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RanuraDepositoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TecladoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DispensadorEfectivoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PantallaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RetiroId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BasedeDatosId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ATMId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ATMId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ATMId })
+        </td>
+    </tr>
+}
+
+</table>

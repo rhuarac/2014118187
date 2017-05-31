@@ -1,0 +1,83 @@
+﻿@model _2014118187_ENT.Entities.ATM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ATM</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Retiro.RetiroId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Retiro.RetiroId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionATM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionATM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RanuraDepositoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RanuraDepositoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TecladoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TecladoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DispensadorEfectivoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DispensadorEfectivoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PantallaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PantallaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RetiroId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RetiroId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BasedeDatosId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BasedeDatosId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ATMId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

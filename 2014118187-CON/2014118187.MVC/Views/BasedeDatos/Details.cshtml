@@ -1,0 +1,99 @@
+﻿@model _2014118187_ENT.Entities.BasedeDatos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BasedeDatos</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ATM.DescripcionATM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ATM.DescripcionATM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Retiro.RetiroId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Retiro.RetiroId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AutentificarCuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AutentificarCuenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ObtenerSaldoDisponible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ObtenerSaldoDisponible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ObtenerSaldoTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ObtenerSaldoTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Debitar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Debitar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Acreditar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Acreditar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CuentaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CuentaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ATMId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ATMId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RetiroId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RetiroId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BasedeDatosId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
