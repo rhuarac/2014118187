@@ -8,18 +8,21 @@ using System.Web;
 using System.Web.Mvc;
 using _2014118187_ENT.Entities;
 using _2014118187_PER;
+using _2014118187_PER.Repositories;
 
 namespace _2014118187.MVC.Controllers
 {
     public class ATMController : Controller
     {
         private _2014118187DbContext db = new _2014118187DbContext();
+        //private UnityOfWork unityOfWork = UnityOfWork.Instance;
 
         // GET: /ATM/
         public ActionResult Index()
         {
             var atm = db.ATM.Include(a => a.Retiro);
             return View(atm.ToList());
+            
         }
 
         // GET: /ATM/Details/5
@@ -30,6 +33,8 @@ namespace _2014118187.MVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ATM atm = db.ATM.Find(id);
+            
+
             if (atm == null)
             {
                 return HttpNotFound();

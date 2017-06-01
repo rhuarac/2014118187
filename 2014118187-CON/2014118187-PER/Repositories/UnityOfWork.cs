@@ -66,5 +66,7 @@ namespace _2014118187_PER.Repositories
 
 
 
+
+        public static UnityOfWork Instance { get; set; }
     }
 }
