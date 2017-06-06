@@ -8,27 +8,40 @@ using System.Web;
 using System.Web.Mvc;
 using _2014118187_ENT.Entities;
 using _2014118187_PER;
+using _2014118187_ENT.IRepositories;
 
 namespace _2014118187.MVC.Controllers
 {
     public class CuentaController : Controller
     {
-        private _2014118187DbContext db = new _2014118187DbContext();
+        private readonly IUnityofWork _UnityOfWork;
 
-        // GET: /Cuenta/
+        public CuentaController()
+        {
+
+        }
+         public CuentaController(IUnityofWork unityOfWork)
+        {
+            _UnityOfWork = unityOfWork;
+        }
+        
+
+        // GET: Cuentas
         public ActionResult Index()
         {
-            return View(db.Cuenta.ToList());
+            //return View(db.Cuenta.ToList());
+            return View(_UnityOfWork.Cuenta.GetAll());
         }
 
-        // GET: /Cuenta/Details/5
+        // GET: Cuentas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cuenta cuenta = db.Cuenta.Find(id);
+            // Cuenta cuenta = db.Cuenta.Find(id);
+            Cuenta cuenta = _UnityOfWork.Cuenta.Get(id);
             if (cuenta == null)
             {
                 return HttpNotFound();
@@ -36,37 +49,40 @@ namespace _2014118187.MVC.Controllers
             return View(cuenta);
         }
 
-        // GET: /Cuenta/Create
+        // GET: Cuentas/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: /Cuenta/Create
+        // POST: Cuentas/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Pin,NumeroCuenta,BaseDatosId")] Cuenta cuenta)
+        public ActionResult Create([Bind(Include = "Pin,NumeroCuenta,BaseDatosId")] Cuenta cuenta)
         {
             if (ModelState.IsValid)
             {
-                db.Cuenta.Add(cuenta);
-                db.SaveChanges();
+                _UnityOfWork.Cuenta.Add(cuenta);
+
+                // db.SaveChanges();
+                _UnityOfWork.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(cuenta);
         }
 
-        // GET: /Cuenta/Edit/5
+        // GET: Cuentas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cuenta cuenta = db.Cuenta.Find(id);
+            //Cuenta cuenta = db.Cuenta.Find(id);
+            Cuenta cuenta = _UnityOfWork.Cuenta.Get(id);
             if (cuenta == null)
             {
                 return HttpNotFound();
@@ -74,30 +90,32 @@ namespace _2014118187.MVC.Controllers
             return View(cuenta);
         }
 
-        // POST: /Cuenta/Edit/5
+        // POST: Cuentas/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Pin,NumeroCuenta,BaseDatosId")] Cuenta cuenta)
+        public ActionResult Edit([Bind(Include = "Pin,NumeroCuenta,BaseDatosId")] Cuenta cuenta)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cuenta).State = EntityState.Modified;
-                db.SaveChanges();
+                _UnityOfWork.StateModified(cuenta);
+                // db.SaveChanges();
+                _UnityOfWork.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(cuenta);
         }
 
-        // GET: /Cuenta/Delete/5
+        // GET: Cuentas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cuenta cuenta = db.Cuenta.Find(id);
+            //Cuenta cuenta = db.Cuenta.Find(id);
+            Cuenta  cuenta= _UnityOfWork.Cuenta.Get(id);
             if (cuenta == null)
             {
                 return HttpNotFound();
@@ -105,14 +123,19 @@ namespace _2014118187.MVC.Controllers
             return View(cuenta);
         }
 
-        // POST: /Cuenta/Delete/5
+        // POST: Cuentas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cuenta cuenta = db.Cuenta.Find(id);
-            db.Cuenta.Remove(cuenta);
-            db.SaveChanges();
+            // Boleta boleta = db.Comprobantes.Find(id);
+            Cuenta cuenta = _UnityOfWork.Cuenta.Get(id);
+
+            //db.Comprobantes.Remove(boleta);
+            _UnityOfWork.Cuenta.Delete(cuenta);
+
+            // db.SaveChanges();
+            _UnityOfWork.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -120,7 +143,7 @@ namespace _2014118187.MVC.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _UnityOfWork.Dispose();
             }
             base.Dispose(disposing);
         }

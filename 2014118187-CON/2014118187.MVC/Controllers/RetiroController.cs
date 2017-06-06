@@ -8,28 +8,41 @@ using System.Web;
 using System.Web.Mvc;
 using _2014118187_ENT.Entities;
 using _2014118187_PER;
+using _2014118187_ENT.IRepositories;
+using _2014118187_PER.Repositories;
 
 namespace _2014118187.MVC.Controllers
 {
     public class RetiroController : Controller
     {
-        private _2014118187DbContext db = new _2014118187DbContext();
+        //private _2014118265DbContext db = new _2014118265DbContext();
+        private readonly IUnityofWork _UnityOfWork;
 
-        // GET: /Retiro/
+        
+        public RetiroController()
+        {
+
+        }
+        public RetiroController(UnityOfWork unityOfWork)
+        {
+            _UnityOfWork = unityOfWork;
+        }
+        // GET: Retiroes
         public ActionResult Index()
         {
-            var retiro = db.Retiro.Include(r => r.ATM).Include(r => r.BasedeDatos).Include(r => r.DispensadorEfectivo).Include(r => r.Pantalla).Include(r => r.Teclado);
-            return View(retiro.ToList());
+            //var retiro = db.Retiro.Include(r => r.ATM).Include(r => r.BasedeDatos).Include(r => r.DispensadorEfectivo).Include(r => r.Pantalla).Include(r => r.Teclado);
+            //return View(retiro.ToList());
+            return View(_UnityOfWork.Retiro.GetAll());
         }
 
-        // GET: /Retiro/Details/5
+        // GET: Retiroes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Retiro retiro = db.Retiro.Find(id);
+            Retiro retiro = _UnityOfWork.Retiro.Get(id);
             if (retiro == null)
             {
                 return HttpNotFound();
@@ -37,88 +50,93 @@ namespace _2014118187.MVC.Controllers
             return View(retiro);
         }
 
-        // GET: /Retiro/Create
+        // GET: Retiroes/Create
         public ActionResult Create()
         {
-            ViewBag.RetiroId = new SelectList(db.ATM, "ATMId", "DescripcionATM");
-            ViewBag.RetiroId = new SelectList(db.BasedeDatos, "BasedeDatosId", "BasedeDatosId");
-            ViewBag.RetiroId = new SelectList(db.DispensadorEfectivo, "DispensadorEfectivoId", "DispensadorEfectivoId");
-            ViewBag.RetiroId = new SelectList(db.Pantalla, "PantallaId", "PantallaId");
-            ViewBag.RetiroId = new SelectList(db.Teclado, "TecladoId", "TecladoId");
+            //ViewBag.RetiroId = new SelectList(db.ATM, "ATMId", "DescripcionATM");
+            //ViewBag.RetiroId = new SelectList(db.BasedeDatos, "BasedeDatosId", "BasedeDatosId");
+            //ViewBag.RetiroId = new SelectList(db.DispensadorEfectivo, "DispensadorEfectivoId", "DispensadorEfectivoId");
+            //ViewBag.RetiroId = new SelectList(db.Pantalla, "PantallaId", "PantallaId");
+            //ViewBag.RetiroId = new SelectList(db.Teclado, "TecladoId", "TecladoId");
             return View();
         }
 
-        // POST: /Retiro/Create
+        // POST: Retiroes/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="RetiroId,PantallaId,TecladoId,DispensadorEfectivoId,BasedeDatosId,ATMId")] Retiro retiro)
+        public ActionResult Create([Bind(Include = "RetiroId,PantallaId,TecladoId,DispensadorEfectivoId,BasedeDatosId,ATMId")] Retiro retiro)
         {
             if (ModelState.IsValid)
             {
-                db.Retiro.Add(retiro);
-                db.SaveChanges();
+                _UnityOfWork.Retiro.Add(retiro);
+
+                // db.SaveChanges();
+                _UnityOfWork.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RetiroId = new SelectList(db.ATM, "ATMId", "DescripcionATM", retiro.RetiroId);
-            ViewBag.RetiroId = new SelectList(db.BasedeDatos, "BasedeDatosId", "BasedeDatosId", retiro.RetiroId);
-            ViewBag.RetiroId = new SelectList(db.DispensadorEfectivo, "DispensadorEfectivoId", "DispensadorEfectivoId", retiro.RetiroId);
-            ViewBag.RetiroId = new SelectList(db.Pantalla, "PantallaId", "PantallaId", retiro.RetiroId);
-            ViewBag.RetiroId = new SelectList(db.Teclado, "TecladoId", "TecladoId", retiro.RetiroId);
+           // ViewBag.RetiroId = new SelectList(db.ATM, "ATMId", "DescripcionATM", retiro.RetiroId);
+            //ViewBag.RetiroId = new SelectList(db.BasedeDatos, "BasedeDatosId", "BasedeDatosId", retiro.RetiroId);
+            //ViewBag.RetiroId = new SelectList(db.DispensadorEfectivo, "DispensadorEfectivoId", "DispensadorEfectivoId", retiro.RetiroId);
+            //ViewBag.RetiroId = new SelectList(db.Pantalla, "PantallaId", "PantallaId", retiro.RetiroId);
+            //ViewBag.RetiroId = new SelectList(db.Teclado, "TecladoId", "TecladoId", retiro.RetiroId);
             return View(retiro);
         }
 
-        // GET: /Retiro/Edit/5
+        // GET: Retiroes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Retiro retiro = db.Retiro.Find(id);
+            // Retiro retiro = db.Retiro.Find(id);
+            Retiro retiro = _UnityOfWork.Retiro.Get(id);
             if (retiro == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.RetiroId = new SelectList(db.ATM, "ATMId", "DescripcionATM", retiro.RetiroId);
-            ViewBag.RetiroId = new SelectList(db.BasedeDatos, "BasedeDatosId", "BasedeDatosId", retiro.RetiroId);
-            ViewBag.RetiroId = new SelectList(db.DispensadorEfectivo, "DispensadorEfectivoId", "DispensadorEfectivoId", retiro.RetiroId);
-            ViewBag.RetiroId = new SelectList(db.Pantalla, "PantallaId", "PantallaId", retiro.RetiroId);
-            ViewBag.RetiroId = new SelectList(db.Teclado, "TecladoId", "TecladoId", retiro.RetiroId);
+           // ViewBag.RetiroId = new SelectList(db.ATM, "ATMId", "DescripcionATM", retiro.RetiroId);
+            //ViewBag.RetiroId = new SelectList(db.BasedeDatos, "BasedeDatosId", "BasedeDatosId", retiro.RetiroId);
+            //ViewBag.RetiroId = new SelectList(db.DispensadorEfectivo, "DispensadorEfectivoId", "DispensadorEfectivoId", retiro.RetiroId);
+            //ViewBag.RetiroId = new SelectList(db.Pantalla, "PantallaId", "PantallaId", retiro.RetiroId);
+            //ViewBag.RetiroId = new SelectList(db.Teclado, "TecladoId", "TecladoId", retiro.RetiroId);
             return View(retiro);
         }
 
-        // POST: /Retiro/Edit/5
+        // POST: Retiroes/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="RetiroId,PantallaId,TecladoId,DispensadorEfectivoId,BasedeDatosId,ATMId")] Retiro retiro)
+        public ActionResult Edit([Bind(Include = "RetiroId,PantallaId,TecladoId,DispensadorEfectivoId,BasedeDatosId,ATMId")] Retiro retiro)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(retiro).State = EntityState.Modified;
-                db.SaveChanges();
+                _UnityOfWork.StateModified(retiro);
+                // db.SaveChanges();
+                _UnityOfWork.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.RetiroId = new SelectList(db.ATM, "ATMId", "DescripcionATM", retiro.RetiroId);
-            ViewBag.RetiroId = new SelectList(db.BasedeDatos, "BasedeDatosId", "BasedeDatosId", retiro.RetiroId);
-            ViewBag.RetiroId = new SelectList(db.DispensadorEfectivo, "DispensadorEfectivoId", "DispensadorEfectivoId", retiro.RetiroId);
-            ViewBag.RetiroId = new SelectList(db.Pantalla, "PantallaId", "PantallaId", retiro.RetiroId);
-            ViewBag.RetiroId = new SelectList(db.Teclado, "TecladoId", "TecladoId", retiro.RetiroId);
+           // ViewBag.RetiroId = new SelectList(db.ATM, "ATMId", "DescripcionATM", retiro.RetiroId);
+            //ViewBag.RetiroId = new SelectList(db.BasedeDatos, "BasedeDatosId", "BasedeDatosId", retiro.RetiroId);
+            //ViewBag.RetiroId = new SelectList(db.DispensadorEfectivo, "DispensadorEfectivoId", "DispensadorEfectivoId", retiro.RetiroId);
+            //ViewBag.RetiroId = new SelectList(db.Pantalla, "PantallaId", "PantallaId", retiro.RetiroId);
+            //ViewBag.RetiroId = new SelectList(db.Teclado, "TecladoId", "TecladoId", retiro.RetiroId);
             return View(retiro);
         }
 
-        // GET: /Retiro/Delete/5
+        // GET: Retiroes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Retiro retiro = db.Retiro.Find(id);
+            //Retiro retiro = db.Retiro.Find(id
+            Retiro retiro= _UnityOfWork.Retiro.Get(id);
             if (retiro == null)
             {
                 return HttpNotFound();
@@ -126,14 +144,21 @@ namespace _2014118187.MVC.Controllers
             return View(retiro);
         }
 
-        // POST: /Retiro/Delete/5
+        // POST: Retiroes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Retiro retiro = db.Retiro.Find(id);
-            db.Retiro.Remove(retiro);
-            db.SaveChanges();
+            //Retiro retiro = db.Retiro.Find(id);
+            //db.Retiro.Remove(retiro);
+            //db.SaveChanges();
+            Retiro retiro = _UnityOfWork.Retiro.Get(id);
+
+            //db.Comprobantes.Remove(boleta);
+            _UnityOfWork.Retiro.Delete(retiro);
+
+            // db.SaveChanges();
+            _UnityOfWork.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -141,7 +166,8 @@ namespace _2014118187.MVC.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                //db.Dispose();
+                _UnityOfWork.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -159,15 +159,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ATMController.cs" />
-    <Compile Include="Controllers\BasedeDatosController.cs" />
     <Compile Include="Controllers\CuentaController.cs" />
-    <Compile Include="Controllers\DispensadorEfectivoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PantallaController.cs" />
-    <Compile Include="Controllers\RanuraDepositoController.cs" />
     <Compile Include="Controllers\RetiroController.cs" />
-    <Compile Include="Controllers\TecladoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
