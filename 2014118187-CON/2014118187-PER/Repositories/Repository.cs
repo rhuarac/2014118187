@@ -28,7 +28,7 @@ namespace _2014118187_PER.Repositories
             _Context.Set<TEntity>().AddRange(entities);
         }
 
-        TEntity IRepository<TEntity>.Get(int Id)
+        TEntity IRepository<TEntity>.Get(int? Id)
         {
             return _Context.Set<TEntity>().Find(Id);
         }

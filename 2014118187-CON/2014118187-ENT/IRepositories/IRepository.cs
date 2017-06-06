@@ -14,7 +14,7 @@ namespace _2014118187_ENT.IRepositories
         void AddRange(IEnumerable<TEntity> entities);
 
         //R EADS
-        TEntity Get(int Id);
+        TEntity Get(int? Id);
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
         //U PDATES
