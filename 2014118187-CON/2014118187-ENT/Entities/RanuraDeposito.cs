@@ -8,6 +8,7 @@ namespace _2014118187_ENT.Entities
 {
     public class RanuraDeposito
     {
+
         public int RanuraDepositoId { get; set; }
         public int Cantidad { get; set; }
 

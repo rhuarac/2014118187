@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _2014118187_ENT.IRepositories
 {
-    public interface IATMRepository: IRepository<ATM>
+    public interface IATMRepository : IRepository<ATM>
     {
     }
 }

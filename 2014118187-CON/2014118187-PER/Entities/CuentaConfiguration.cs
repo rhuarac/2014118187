@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace _2014118187_PER.Entities
 {
-    public class CuentaConfiguration : EntityTypeConfiguration<Cuenta>
+    public class CuentaConfiguration:EntityTypeConfiguration<Cuenta>
     {
         public CuentaConfiguration()
         {
@@ -16,5 +16,6 @@ namespace _2014118187_PER.Entities
             HasKey(c => c.Pin);
             Property(c => c.NumeroCuenta);
         }
+    
     }
 }

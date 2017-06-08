@@ -54,9 +54,9 @@
     <Compile Include="Entities\RanuraDepositoConfiguration.cs" />
     <Compile Include="Entities\RetiroConfiguration.cs" />
     <Compile Include="Entities\TecladoConfiguration.cs" />
-    <Compile Include="Migrations\201705311954290_InitialModel.cs" />
-    <Compile Include="Migrations\201705311954290_InitialModel.Designer.cs">
-      <DependentUpon>201705311954290_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\201706081647045_InitialModel.cs" />
+    <Compile Include="Migrations\201706081647045_InitialModel.Designer.cs">
+      <DependentUpon>201706081647045_InitialModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\ATMRepository.cs" />
@@ -76,17 +76,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706081647045_InitialModel.resx">
+      <DependentUpon>201706081647045_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\2014118187-ENT\2014118187-ENT.csproj">
       <Project>{756824c1-276e-42e2-bf03-4856fe997890}</Project>
       <Name>2014118187-ENT</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705311954290_InitialModel.resx">
-      <DependentUpon>201705311954290_InitialModel.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -10,10 +10,24 @@ namespace _2014118187_PER.Repositories
 {
     public class DispensadorEfectivoRepository : Repository<DispensadorEfectivo>, IDispensadorEfectivoRepository
     {
+
         public DispensadorEfectivoRepository(_2014118187DbContext context)
             : base(context)
         {
 
         }
+
+        /* private readonly  _2014118265DbContext _Context;
+
+        public DispensadorEfectivoRepository(_2014118187DbContext context)
+        {
+            _Context = context;
+        }
+
+        private DispensadorEfectivoRepository()
+        {
+
+        }
+        */
     }
 }

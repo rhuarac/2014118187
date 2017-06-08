@@ -10,6 +10,7 @@ namespace _2014118187_PER.Entities
 {
     public class ATMConfiguration : EntityTypeConfiguration<ATM>
     {
+
         public ATMConfiguration()
         {
             ToTable("ATM");
@@ -34,9 +35,7 @@ namespace _2014118187_PER.Entities
                .WithRequiredPrincipal(c => c.ATM);
 
 
-            //Retiro
-            HasOptional(c => c.Retiro)
-                .WithRequired(c => c.ATM);
+
             //Base de Datos
             HasRequired(c => c.BasedeDatos)
                 .WithRequiredPrincipal(c => c.ATM);

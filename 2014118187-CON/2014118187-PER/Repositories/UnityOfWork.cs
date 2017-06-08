@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _2014118187_PER.Repositories
 {
-    public class UnityOfWork: IUnityofWork
+    public class UnityOfWork : IUnityOfWork
     {
         private readonly _2014118187DbContext _Context;
         private static UnityOfWork _Instance;
@@ -29,11 +29,9 @@ namespace _2014118187_PER.Repositories
 
         public IDispensadorEfectivoRepository DispensadorEfectivo { get; private set; }
 
-
-        public UnityOfWork(_2014118187DbContext context)
+        private UnityOfWork()
         {
-            _Context= context;
-
+            _Context = new _2014118187DbContext();
             ATM = new ATMRepository(_Context);
             Teclado = new TecladoRepository(_Context);
             Pantalla = new PantallaRepository(_Context);
@@ -42,11 +40,22 @@ namespace _2014118187_PER.Repositories
             RanuraDeposito = new RanuraDepositoRepository(_Context);
             Cuenta = new CuentaRepository(_Context);
             BasedeDatos = new BasedeDatosRepository(_Context);
-
         }
-        
-        
 
+        public static UnityOfWork Instance
+        {
+            get
+            {
+                lock (_Lock)
+                {
+                    if (Instance == null)
+                        _Instance = new UnityOfWork();
+
+
+                }
+                return _Instance;
+            }
+        }
 
         public void Dispose()
         {
@@ -55,18 +64,11 @@ namespace _2014118187_PER.Repositories
 
         public int SaveChanges()
         {
-           return  _Context.SaveChanges();
+            return _Context.SaveChanges();
         }
-
-
         public void StateModified(object Entity)
         {
             _Context.Entry(Entity).State = System.Data.Entity.EntityState.Modified;
         }
-
-
-
-
-        public static UnityOfWork Instance { get; set; }
     }
 }

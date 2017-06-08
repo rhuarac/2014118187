@@ -10,10 +10,25 @@ namespace _2014118187_PER.Repositories
 {
     public class PantallaRepository : Repository<Pantalla>, IPantallaRepository
     {
+
         public PantallaRepository(_2014118187DbContext context)
             : base(context)
         {
 
         }
+
+
+
+        /*private readonly _2014118265DbContext _Context;
+
+        public PantallaRepository(_2014118187DbContext context)
+        {
+            _Context = context;
+        }
+        private PantallaRepository()
+        {
+
+        }
+        */
     }
 }

@@ -12,7 +12,7 @@ namespace _2014118187_PER
 {
     public class _2014118187DbContext: DbContext
     {
-        public DbSet<Teclado> Teclado { get; set; }
+         public DbSet<Teclado> Teclado { get; set; }
         public DbSet<ATM> ATM { get; set; }
         public DbSet<BasedeDatos> BasedeDatos { get; set; }
         public DbSet<Cuenta> Cuenta { get; set; }
@@ -36,5 +36,7 @@ namespace _2014118187_PER
 
             base.OnModelCreating(modelBuilder);
         }
+
+    
     }
 }

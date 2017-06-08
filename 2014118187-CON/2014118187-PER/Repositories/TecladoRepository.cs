@@ -15,5 +15,19 @@ namespace _2014118187_PER.Repositories
         {
 
         }
+
+
+        /* private readonly _2014118265DbContext _Context;
+
+        public TecladoRepository(_2014118187DbContext context)
+        {
+            _Context = context;
+        }
+
+        private TecladoRepository()
+        {
+
+        }
+        */
     }
 }

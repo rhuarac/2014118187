@@ -12,7 +12,11 @@ namespace _2014118187_ENT.Entities
         public int Pin { get; set; }
 
         //Base de Datos
-        public int BaseDatosId { get; set; }
-        public BasedeDatos BasedeDatos { get; set; }
+        public List<Retiro> Retiros { get; set; }
+
+        public Cuenta()
+        {
+            Retiros = new List<Retiro>();
+        }
     }
 }

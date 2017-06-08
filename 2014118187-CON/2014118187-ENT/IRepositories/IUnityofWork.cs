@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _2014118187_ENT.IRepositories
 {
-    public interface IUnityofWork : IDisposable
+    public interface IUnityOfWork : IDisposable
     {
         IATMRepository ATM { get; }
         IBasedeDatosRepository BasedeDatos { get; }
@@ -20,6 +20,5 @@ namespace _2014118187_ENT.IRepositories
         int SaveChanges();
 
         void StateModified(object entity);
-
     }
 }

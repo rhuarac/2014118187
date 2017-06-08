@@ -15,19 +15,15 @@ namespace _2014118187_PER.Entities
             ToTable("Retiro");
             HasKey(c => c.RetiroId);
 
-
-            //Relacion Pantalla
-            HasRequired(c => c.Pantalla)
-               .WithOptional(c => c.Retiro);
-            //Dispensador de Efectivo
-            HasRequired(c => c.DispensadorEfectivo)
-             .WithOptional(c => c.Retiro);
-            //Teclado
-            HasRequired(c => c.Teclado)
-              .WithOptional(c => c.Retiro);
-            //Base de datos
-            HasRequired(c => c.BasedeDatos)
-            .WithOptional(c => c.Retiro);
+            //Cuenta
+            HasMany(c => c.Cuentas)
+                .WithMany(c => c.Retiros)
+                .Map(m =>
+                {
+                    m.ToTable("CuentaRetiros");
+                    m.MapLeftKey("CuentaId");
+                    m.MapRightKey("RetiroId");
+                });
 
 
         }

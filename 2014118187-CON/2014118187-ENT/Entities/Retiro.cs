@@ -10,24 +10,15 @@ namespace _2014118187_ENT.Entities
     {
         public int RetiroId { get; set; }
 
-        //Pantalla
-        public int PantallaId { get; set; }
-        public Pantalla Pantalla { get; set; }
 
-        //Teclado
-        public int TecladoId { get; set; }
-        public Teclado Teclado { get; set; }
 
-        //DispensadorEfectivo
-        public int DispensadorEfectivoId { get; set; }
-        public DispensadorEfectivo DispensadorEfectivo { get; set; }
 
-        //Retiro
-        public int BasedeDatosId { get; set; }
-        public BasedeDatos BasedeDatos { get; set; }
+        //Cuenta
+        public ICollection<Cuenta> Cuentas { get; set; }
+        public Retiro()
+        {
+            Cuentas = new HashSet<Cuenta>();
+        }
 
-        //ATM
-        public int ATMId { get; set; }
-        public ATM ATM { get; set; }
     }
 }

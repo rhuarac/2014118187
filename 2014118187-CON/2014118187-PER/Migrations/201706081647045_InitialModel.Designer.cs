@@ -13,7 +13,7 @@ namespace _2014118187_PER.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201705311954290_InitialModel"; }
+            get { return "201706081647045_InitialModel"; }
         }
         
         string IMigrationMetadata.Source

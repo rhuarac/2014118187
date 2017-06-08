@@ -10,9 +10,25 @@ namespace _2014118187_PER.Repositories
 {
     public class RanuraDepositoRepository : Repository<RanuraDeposito>, IRanuraDepositoRepository
     {
-        public RanuraDepositoRepository(_2014118187DbContext context) : base(context)
+
+        public RanuraDepositoRepository(_2014118187DbContext context)
+            : base(context)
         {
 
         }
+
+
+
+        /*private readonly _2014118265DbContext _Context;
+
+        public RanuraDepositoRepository(_2014118265DbContext context)
+        {
+            _Context = context;
+        }
+
+        private RanuraDepositoRepository()
+        {
+
+        }*/
     }
 }

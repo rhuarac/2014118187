@@ -10,9 +10,23 @@ namespace _2014118187_PER.Repositories
 {
     public class CuentaRepository : Repository<Cuenta>, ICuentaRepository
     {
-        public CuentaRepository(_2014118187DbContext context): base(context)
+
+        public CuentaRepository(_2014118187DbContext context)
+            : base(context)
         {
 
+
         }
+
+        /* private readonly _2014118187DbContext _Context;
+
+         public CuentaRepository(_2014118265DbContext context)
+         {
+             _Context = context;
+         }
+         private CuentaRepository()
+         {
+
+         }*/
     }
 }

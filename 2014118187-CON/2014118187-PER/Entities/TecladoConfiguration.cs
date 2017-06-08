@@ -10,7 +10,7 @@ namespace _2014118187_PER.Entities
 {
     public class TecladoConfiguration : EntityTypeConfiguration<Teclado>
     {
-         public TecladoConfiguration()
+        public TecladoConfiguration()
         {
             ToTable("Teclado");
             HasKey(c => c.TecladoId);

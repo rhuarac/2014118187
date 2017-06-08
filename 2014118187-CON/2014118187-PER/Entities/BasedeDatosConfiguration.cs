@@ -22,9 +22,7 @@ namespace _2014118187_PER.Entities
 
 
 
-            //Relacion Cuenta
-            HasMany(c => c.Cuentas)
-               .WithRequired(c => c.BasedeDatos);
+
 
 
         }
