@@ -14,7 +14,7 @@ namespace _2014118187.MVC.Controllers
 {
     public class CuentaController : Controller
     {
-        private readonly IUnityofWork _UnityOfWork;
+        private readonly IUnityOfWork _UnityOfWork;
 
         public CuentaController()
         {

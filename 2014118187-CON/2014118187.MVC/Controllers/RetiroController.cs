@@ -16,7 +16,7 @@ namespace _2014118187.MVC.Controllers
     public class RetiroController : Controller
     {
         //private _2014118187DbContext db = new _2014118187DbContext();
-        private readonly IUnityofWork _UnityOfWork;
+        private readonly IUnityOfWork _UnityOfWork;
 
         
         public RetiroController()

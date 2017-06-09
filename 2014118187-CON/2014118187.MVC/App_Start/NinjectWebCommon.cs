@@ -64,7 +64,7 @@ namespace _2014118187.MVC.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IUnityofWork>().To<UnityOfWork>();
+            kernel.Bind<IUnityOfWork>().To<UnityOfWork>();
             kernel.Bind<_2014118187DbContext>().To<_2014118187DbContext>();
 
             kernel.Bind<IRetiroRepository>().To<RetiroRepository>();
